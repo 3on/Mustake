@@ -2,3 +2,30 @@ html, body {
 	margin: 0px;
 	padding: 0px;
 }
+
+body {
+	background-color: #DEDEDE;
+}
+
+
+#content {
+	margin: auto;
+	margin-top: 100px;
+	width: 800px;
+	min-height: :500px;
+}
+
+#mustake {
+	background-color: white;
+	border-radius: 4px;
+	border-bottom: 1px;
+	margin-bottom: 10px;
+
+	box-shadow: 0px 0px 6px rgba(42,42,42, 0.5);
+
+	display: none;
+}
+
+
+h1 { padding: 280px 0 0 0; margin: 0; text-align: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: normal; }
+h2 { padding: 5px 0 0 0; margin: 0; text-align: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; color: #999; font-weight: normal; }

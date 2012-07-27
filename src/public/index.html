@@ -1,17 +1,62 @@
 <html>
 <head>
 	<title>Mustake</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/mustake.css" />
 	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
 	<script type="text/javascript" src="/javascripts/underscore-min.js"></script>
-	<script type="text/javascript" src="/javascripts/chaussettes.js"></script>
+	<script type="text/javascript" src="/javascripts/chaussette.js"></script>
 	<script type="text/javascript" src="/javascripts/mustake.js"></script>
 	<script type="text/javascript">
 	$(function() {
-		Game = new Mustake();
+		$("#lame").click(function(){
+			$(this).hide();
+			$("#mustake").show();
+
+			Game = new Mustake().start();
+			var data = {
+			    me : [
+			        {x: 0, y: 0, o: 'down'},
+			        {x: 0, y: 1, o: 'down'},
+			        {x: 0, y: 2, o: 'down'},
+			        {x: 1, y: 2, o: 'left'},
+			        {x: 2, y: 2, o: 'left'},
+			        {x: 3, y: 2, o: 'left'},
+			        {x: 3, y: 1, o: 'up'},
+			        {x: 3, y: 0, o: 'up'},
+			        {x: 3, y: -1, o: 'up'},
+			        {x: 3, y: -2, o: 'up'},
+			    ],
+			    error : null,
+			    clouds : [
+			        {x: 20, y: -1},
+			        {x: 10, y: 0},
+			        {x: -5, y: -18},
+			        {x: 7, y: 15},
+			    ]
+			};
+
+			Game.draw(data);
+		})
+
+		$("#lame").click() // DEBUUUUUGGGGGGGG
 	});
 	</script>
 </head>
 <body>
-	<canvas id="mustake"></canvas>
+	<div id="content">
+		<canvas id="mustake" width="800" height="500"></canvas>
+		<center id="lame"><div style="width: 530px; height: 430px; background-image: url(http://static.dotcloud.com/proxy/warning.png); margin: 25px auto;">
+      	<h1>
+        	No Application Configured
+      	</h1>
+      	<h2>
+        	This domain is not associated with an application.
+     	</h2>
+    	</div></center>
+    	<center>
+    		<href="http://www.dotcloud.com/"><img src="http://static.dotcloud.com/proxy/logo.png" style="margin-top: 10px; border: 0;" /></a>
+    	</center>
+		
+	</div>
 </body>
 </html>
