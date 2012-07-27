@@ -1,7 +1,15 @@
-// render updated game state
-io.on('update', function(data) {
-	
-});
+function Mustake () {
+	var canvas;
+	var ctx;
 
-// emit this on keypress
-io.emit('keypress', data);
+
+	function init () {
+		canvas = document.getElementById("mustake");
+		ctx = canvas.getContext('2d');
+
+	}
+
+	this.start = function () {
+
+	};
+}
