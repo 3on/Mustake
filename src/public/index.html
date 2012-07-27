@@ -12,7 +12,11 @@
 			$(this).hide();
 			$("#mustake").show();
 
-			Game = new Mustake().start();
+			var play = function(){
+				Game.draw(data);
+			}
+
+			Game = new Mustake().start(play);
 			var data = {
 			    me : [
 			        {x: 0, y: 0, o: 'down'},
@@ -33,8 +37,7 @@
 			        {x: 7, y: 15},
 			    ]
 			};
-
-			Game.draw(data);
+			
 		})
 
 		$("#lame").click() // DEBUUUUUGGGGGGGG
