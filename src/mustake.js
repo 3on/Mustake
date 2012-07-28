@@ -170,7 +170,7 @@ Mustake.prototype = {
 			_.each(_this.players, function(player) {
 				player.callback(_this.getInfo(player.getId()));
 			});
-		}, 250);
+		}, 100);
 	},
 };
 
