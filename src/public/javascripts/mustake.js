@@ -29,10 +29,11 @@ function Mustake () {
 		var dWidth = img.width / 2;
 		var dHeight = img.height / 2;
 
-		//ctx.translate(dx, dy);
-		//ctx.rotate(Math.PI/2);
+		ctx.save();
+		ctx.translate(dx, dy);
+		ctx.rotate(Math.PI/2);
 		ctx.drawImage(img, 0, 0, img.width, img.height, dx, dy, dWidth, dHeight);
-		//ctx.restore();
+		ctx.restore();
 	}
 
 	function drawSnake(mustaches, me) {
