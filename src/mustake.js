@@ -101,10 +101,12 @@ Mustake.prototype = {
 	createPlayer : function(callback) {
 		var id = this.nextId++;
 		this.players[id] = new Player(id, callback);
-		this.addCloud({x: 0, y: 0, radius: 20});
-		this.addCloud({x: 0, y: 0, radius: 20});
-		this.addCloud({x: 0, y: 0, radius: 20});
-		this.addCloud({x: 0, y: 0, radius: 20});
+		this.addCloud({x: 0, y: 0, radius: 50});
+		this.addCloud({x: 0, y: 0, radius: 50});
+		this.addCloud({x: 0, y: 0, radius: 50});
+		this.addCloud({x: 0, y: 0, radius: 50});
+		this.addCloud({x: 0, y: 0, radius: 50});
+		this.addCloud({x: 0, y: 0, radius: 50});
 		return this.players[id];
 	},
 	removePlayer : function(id) {
