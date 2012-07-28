@@ -70,8 +70,8 @@ Player.prototype = {
 			this.data.unshift(newHead);
 			if(!this.grow) {
 				this.data.pop();
-				this.grow = false;
 			}
+			this.grow = false;
 		}
 	},
 	setO : function(o) {
@@ -163,14 +163,14 @@ Mustake.prototype = {
 					// remove the eaten cloud
 					_this.clouds = _this.clouds.slice(0, cloud.index).concat(_this.clouds.slice(cloud.index+1, _this.clouds.length));
 					// add another cloud
-					addCloud({x: head.x, y: head.y, radius: 20});
+					_this.addCloud({x: head.x, y: head.y, radius: 20});
 				}
 			});
 			// now call each player's callback and sent it world state
 			_.each(_this.players, function(player) {
 				player.callback(_this.getInfo(player.getId()));
 			});
-		}, 500);
+		}, 250);
 	},
 };
 
