@@ -2,6 +2,7 @@ function Mustake () {
 	var canvas;
 	var ctx;
 	var chaussette;
+	var inputs;
 	var self = this;
 	var loop = false;
 	var images = {};
@@ -74,6 +75,7 @@ function Mustake () {
 	function letsGo(cb){
 		return function() {
 			//chausette = new Chaussette();
+			inputs = new Inputs();
 			console.log("> Game started");
 
 			if(cb) cb()
