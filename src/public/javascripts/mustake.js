@@ -1,7 +1,7 @@
 function Mustake () {
 	var canvas;
 	var ctx;
-	var chaussette;
+	this.chaussette = null;
 	var inputs;
 	var self = this;
 	var loop = false;
@@ -29,7 +29,7 @@ function Mustake () {
 	}
 
 	function drawSnake(mustaches) {
-		console.log("> Draw a snake")
+		//console.log("> Draw a snake")
 		if (mustaches.length < 1) { throw "This snake is way to small" };
 
 		drawMustache('head', mustaches[0]);
@@ -41,8 +41,22 @@ function Mustake () {
 
 
 	this.draw = function(data) {
-		console.log("> update display");
+		ctx.clearRect(0,0, canvas.width, canvas.height);
+		//console.log("> update display");
 		drawSnake(data.me);
+		 drawClouds(data.clouds)
+	}
+
+	function drawCloud(pos){
+		var img = images['dotcloud'];
+		ctx.drawImage(img, 0, 0, img.width, img.height, convX(pos.x), convY(pos.y), img.width / 2, img.height / 2);
+	}
+
+
+	function drawClouds(clouds) {
+		for (var i = 0; i < clouds.length; i++) {
+			drawCloud(clouds[i]);
+		};
 	}
 
 	function preaload() {
@@ -74,7 +88,7 @@ function Mustake () {
 	
 	function letsGo(cb){
 		return function() {
-			//chausette = new Chaussette();
+			self.chaussette = new Chaussette();
 			inputs = new Inputs();
 			console.log("> Game started");
 
@@ -87,7 +101,7 @@ function Mustake () {
 		ctx = canvas.getContext('2d');
 		loop = true;
 		
-		preaload(letsGo(cb), 'cloud-75.png', 'cloud-95.png', 'mustache-head.png', 'mustache-head-other.png', 'mustache.png');
+		preaload(letsGo(cb), 'cloud-75.png', 'cloud-95.png', 'mustache-head.png', 'mustache-head-other.png', 'mustache.png', 'dotcloud.png');
 	}
 
 	this.start = function (cb) {

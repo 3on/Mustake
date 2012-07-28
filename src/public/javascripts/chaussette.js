@@ -1,16 +1,16 @@
 function Chaussette () {
-	var socket = io.connect('http://localhost');
-	if(!io) {
-		console.log("socket IO is not working!!!")
-		return
-	}
-	
+	var socket = io.connect('http://localhost:8080');
+
 	// render updated game state
-	io.on('update', function(data){
+	socket.on('update', function(data){
+		console.log(data)
 		Game.draw(data);
 	});
 	
 	// emit this on keypress
-	io.emit('keypress', data);
+	this.send = function(data){
+		//console.log(data)
+		socket.emit('keypress', data);
+	}
 
 };

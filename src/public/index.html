@@ -4,9 +4,13 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/mustake.css" />
 	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
 	<script type="text/javascript" src="/javascripts/underscore-min.js"></script>
-	<script type="text/javascript" src="/javascripts/chaussette.js"></script>
-	<script type="text/javascript" src="/javascripts/mustake.js"></script>
+
 	<script src="/socket.io/socket.io.js"></script>
+
+	<script type="text/javascript" src="/javascripts/chaussette.js"></script>
+	<script type="text/javascript" src="/javascripts/inputs.js"></script>
+	<script type="text/javascript" src="/javascripts/mustake.js"></script>
+	
 	<script type="text/javascript">
 	$(function() {
 		$("#lame").click(function(){
@@ -14,7 +18,7 @@
 			$("#mustake").show();
 
 			var play = function(){
-				Game.draw(data);
+				//Game.draw(data);
 			}
 
 			Game = new Mustake().start(play);
