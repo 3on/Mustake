@@ -33,7 +33,7 @@ io.on('connection', function(socket) {
     });
     socket.on('keypress', function(data) {
         var key = data.key;
-        if (['up', 'down', 'left', 'right'].indexOf(key) < 0) {
+        if (['up', 'down', 'left', 'right'].indexOf(key) >= 0) {
             player.setO(key);
         }
     });
