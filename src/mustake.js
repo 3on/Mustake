@@ -77,7 +77,7 @@ Player.prototype = {
 	setO : function(o) {
 		this.o = o;
 	},
-	grow : function() {
+	markGrow : function() {
 		this.grow = true;
 	},
 	kill : function() {
@@ -159,7 +159,7 @@ Mustake.prototype = {
 				var cloud = collision(player.getHead(), _this.clouds);
 				if(cloud) {
 					// mark this player to grow next tick
-					player.grow();
+					player.markGrow();
 					// remove the eaten cloud
 					_this.clouds = _this.clouds.slice(0, cloud.index).concat(_this.clouds.slice(index+1, _this.clouds.length));
 					// add another cloud
