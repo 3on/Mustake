@@ -83,8 +83,8 @@ Player.prototype = {
 	kill : function() {
 		this.alive = false;
 	},
-	isDead : function() {
-		return !this.alive;
+	isAlive : function() {
+		return this.alive;
 	},
 	length : function() {
 		return this.data.length;
@@ -126,7 +126,7 @@ Mustake.prototype = {
 		var head = this.players[id].getHead();
 		data.me = this.players[id].getInfo(head);
 		data.players = [];
-		if(this.players[id].isAlive) {
+		if(this.players[id].isAlive()) {
 			data.error = null;
 		}
 		else {
