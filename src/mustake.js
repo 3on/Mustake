@@ -9,7 +9,6 @@ var collision = function(here, objs) {
 	var match = null;
 	_.each(objs, function(obj, index) {
 		if (here.x === obj.x && here.y === obj.y) {
-			console.log(obj);
 			match = {object: obj, index: index};
 		}
 	});

@@ -29,7 +29,6 @@ var game = new mustake();
 io.on('connection', function(socket) {
     var player = game.createPlayer(function(data) {
         socket.emit('update', data);
-        console.log(data);
     });
     socket.on('keypress', function(data) {
         var key = data.key;
