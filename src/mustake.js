@@ -6,12 +6,14 @@ var randomDirection = function() {
 };
 
 var collision = function(here, objs) {
+	var match = null;
 	_.each(objs, function(obj, index) {
-		if (here.x == obj.x && here.y == obj.y) {
-			return {object: obj, index: index};
+		if (here.x === obj.x && here.y === obj.y) {
+			console.log(obj);
+			match = {object: obj, index: index};
 		}
 	});
-	return null;
+	return match;
 };
 
 var Player = function(id, callback) {
@@ -20,6 +22,7 @@ var Player = function(id, callback) {
 	this.id = id;
 	this.grow = false;
 	this.callback = callback;
+	this.alive = true;
 };
 
 Player.prototype = {
@@ -46,27 +49,29 @@ Player.prototype = {
 		return this.id;
 	},
 	advance : function() {
-		var head = this.data[0];
-		var newHead = {x: head.x, y: head.y, o: this.o};
-		if (head.o == 'up') {
-			newHead.y = head.y + 1;
-		}
-		else if( head.o == 'down') {
-			newHead.y = head.y - 1;
-		}
-		else if( head.o == 'left') {
-			newHead.x = head.x - 1;
-		}
-		else if( head.o == 'right') {
-			newHead.x = head.x + 1;
-		}
-		else {
-			throw 'unacceptable head orientation: ' + head.o;
-		}
-		this.data.unshift(newHead);
-		if(!this.grow) {
-			this.data.pop();
-			this.grow = false;
+		if(this.alive) {
+			var head = this.data[0];
+			var newHead = {x: head.x, y: head.y, o: this.o};
+			if (head.o == 'up') {
+				newHead.y = head.y + 1;
+			}
+			else if( head.o == 'down') {
+				newHead.y = head.y - 1;
+			}
+			else if( head.o == 'left') {
+				newHead.x = head.x - 1;
+			}
+			else if( head.o == 'right') {
+				newHead.x = head.x + 1;
+			}
+			else {
+				throw 'unacceptable head orientation: ' + head.o;
+			}
+			this.data.unshift(newHead);
+			if(!this.grow) {
+				this.data.pop();
+				this.grow = false;
+			}
 		}
 	},
 	setO : function(o) {
@@ -74,6 +79,12 @@ Player.prototype = {
 	},
 	grow : function() {
 		this.grow = true;
+	},
+	kill : function() {
+		this.alive = false;
+	},
+	isDead : function() {
+		return !this.alive;
 	}
 };
 
@@ -112,7 +123,12 @@ Mustake.prototype = {
 		var head = this.players[id].getHead();
 		data.me = this.players[id].getInfo(head);
 		data.players = [];
-		data.error = null;
+		if(this.players[id].isAlive) {
+			data.error = null;
+		}
+		else {
+			data.error = 'you are dead';
+		}
 		_.each(this.players, function(player) {
 			if(id !== player.getId()) {
 				data.players.push(player.getInfo(head));
@@ -130,8 +146,12 @@ Mustake.prototype = {
 			// advance and detect collisions
 			_.each(_this.players, function(player) {
 				player.advance();
+				var head = player.getHead();
 				// check if they hit themself
-				//var hitSelf = collision(player.getHead(), player.getInfo().slice(1,))
+				var hitSelf = collision(player.getHead(), player.getInfo().slice(1,player.length()));
+				if(hitSelf) {
+					player.kill();
+				}
 				// check if clouds have been eaten
 				var cloud = collision(player.getHead(), _this.clouds);
 				if(cloud) {
@@ -140,6 +160,7 @@ Mustake.prototype = {
 					// remove the eaten cloud
 					_this.clouds = _this.clouds.slice(0, cloud.index).concat(_this.clouds.slice(index+1, _this.clouds.length));
 					// add another cloud
+					addCloud({x: head.x, y: head.y, radius: 20});
 				}
 			});
 			// now call each player's callback and sent it world state
