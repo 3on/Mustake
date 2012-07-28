@@ -9,7 +9,7 @@ function Chaussette () {
 	
 	// emit this on keypress
 	this.send = function(data){
-		//console.log(data)
+		console.log(data)
 		socket.emit('keypress', data);
 	}
 

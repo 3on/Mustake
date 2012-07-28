@@ -23,21 +23,36 @@ function Mustake () {
 		else if(kind == "head-other") var img = images['mustache-head-other'];
 		else var img = images['mustache'];
 
-		//ctx.translate(img.width/2, img.height/2);
-		//ctx.rotate(Math.PI/2);
-		ctx.drawImage(img, 0, 0, img.width, img.height, convX(pos.x), convY(pos.y), img.width / 2, img.height / 2);
-		//ctx.restore();
+		var dx = convX(pos.x) - (img.width / 2);
+		var dy = convY(pos.y) - (img.height / 2);
+
+		var dWidth = img.width / 2;
+		var dHeight = img.height / 2;
+
+		ctx.translate(dx, dy);
+		ctx.rotate(Math.PI/2);
+		ctx.drawImage(img, 0, 0, img.width, img.height, dx, dy, dWidth, dHeight);
+		ctx.restore();
 	}
 
-	function drawSnake(mustaches) {
+	function drawSnake(mustaches, me) {
 		//console.log("> Draw a snake")
 		if (mustaches.length < 1) { throw "This snake is way to small" };
 
-		drawMustache('head', mustaches[0]);
+		me = (me === undefined)? true: false;
+		var kind = (me)?'head':'head-other';
+		drawMustache(kind, mustaches[0]);
 
 		for (var i = 1; i < mustaches.length; i++) {
 			drawMustache('tail', mustaches[i]);
 		};
+	}
+
+	function drawPlayers(players){
+		for (var i = 0; i < players.length; i++) {
+			drawSnake(players[i], false);
+		};
+		
 	}
 
 
@@ -45,7 +60,8 @@ function Mustake () {
 		ctx.clearRect(0,0, canvas.width, canvas.height);
 		//console.log("> update display");
 		drawSnake(data.me);
-		 drawClouds(data.clouds)
+		drawPlayers(data.players);
+		drawClouds(data.clouds);
 	}
 
 	function drawCloud(pos){
