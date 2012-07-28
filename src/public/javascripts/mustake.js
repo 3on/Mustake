@@ -46,10 +46,10 @@ function Mustake () {
 			ctx.translate(dx, dy);
 			ctx.rotate(0);
 		}
-		ctx.fillStyle = "rgb(255,0,0)";  
- 		ctx.fillRect (-2, -2, 4, 4);
+		//ctx.fillStyle = "rgb(255,0,0)";  
+ 		//ctx.fillRect (-2, -2, 4, 4);
 
-		ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, dWidth, dHeight);
+		ctx.drawImage(img, 0, 0, img.width, img.height, -(img.width / 2), -(img.width / 2), dWidth, dHeight);
 		ctx.restore();
 	}
 
