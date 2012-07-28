@@ -85,14 +85,16 @@ function Mustake () {
 	function drawCloud(pos){
 		var img = images['dotcloud'];
 
-		var dx = convX(pos.x) - (img.width / 2);
-		var dy = convY(pos.y) - (img.height / 2);
-
 		var dWidth = img.width / 2;
 		var dHeight = img.height / 2;
 
-		//ctx.fillStyle = "rgb(255,0,0)";  
- 		//ctx.fillRect (-2, -2, 4, 4);
+		var dx = convX(pos.x) - (img.width / 2) ;
+		var dy = convY(pos.y) - (img.height) ;
+
+		
+
+		//ctx.fillStyle = "rgb(0,255,0)";  
+ 		//ctx.fillRect (dx - 2, dy -2, 4, 4);
 
 		ctx.drawImage(img, 0, 0, img.width, img.height, dx, dy, dWidth, dHeight);
 	}
