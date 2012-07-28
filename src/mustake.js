@@ -118,8 +118,6 @@ Mustake.prototype = {
 				data.players.push(player.getInfo(head));
 			}
 		});
-		console.log(this.players[id]);
-		console.log(data.players);
 		data.clouds = [];
 		_.each(this.clouds, function(cloud) {
 			data.clouds.push({x: cloud.x - head.x, y: cloud.y - head.y});

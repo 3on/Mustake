@@ -20,8 +20,8 @@ app.configure('production', function(){
     app.use(express.errorHandler());
 });
 
-app.get('/play', function(req, res) {
-    res.sendfile('index.html');
+app.get('/', function(req, res) {
+    res.sendfile('public/index.html');
 });
 
 var game = new mustake();
@@ -41,9 +41,3 @@ io.on('connection', function(socket) {
 
 app.listen(8080);
 game.run();
-var player = game.createPlayer(function(data) {
-    console.log(data);
-});
-var player2 = game.createPlayer(function(data) {
-    console.log(data);
-});
