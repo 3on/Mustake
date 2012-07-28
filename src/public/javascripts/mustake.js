@@ -30,9 +30,24 @@ function Mustake () {
 		var dHeight = img.height / 2;
 
 		ctx.save();
-		ctx.translate(dx, dy);
-		ctx.rotate(Math.PI/2);
-		ctx.drawImage(img, 0, 0, img.width, img.height, dx, dy, dWidth, dHeight);
+		if(pos.o == "down") {
+			ctx.translate(dx, dy);
+			ctx.rotate(Math.PI/2);
+		}
+		else if(pos.o == "up") {
+			ctx.translate(dx, dy);
+			ctx.rotate(-Math.PI/2);
+		}
+		else if(pos.o == "left") {
+			ctx.translate(dx, dy);
+			ctx.rotate(Math.PI);
+		}
+		else if(pos.o == "right") {
+			ctx.translate(dx, dy);
+			ctx.rotate(0);
+		}
+
+		ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, dWidth, dHeight);
 		ctx.restore();
 	}
 
