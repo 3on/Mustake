@@ -1,5 +1,7 @@
 function Chaussette () {
-	var socket = io.connect('http://mustake:8080');
+	var url = 'http://mustake:8080';
+	url = 'http://mustake-dotcloud-labs.dotcloud.com';
+	var socket = io.connect(url);
 
 	// render updated game state
 	socket.on('update', function(data){

@@ -1,7 +1,7 @@
 var express = require('express')
     , _ = require('underscore')
     , app = express.createServer()
-    , io = require('socket.io').listen(app)
+    , io = require('socket.io').listen(app, { log: false })
     , mustake = require('./mustake.js');
 
 app.configure(function() {
@@ -42,5 +42,6 @@ io.on('connection', function(socket) {
     })
 });
 
-app.listen(8080);
+console.log('Starting server on port: ' , process.env.PORT_WWW || 8080)
+app.listen(process.env.PORT_WWW || 8080);
 game.run();

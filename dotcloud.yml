@@ -1,0 +1,7 @@
+www:
+  type: custom
+  buildscript: builder.sh
+  ports:
+    www: http
+  process: node server.js
+  approot: src
