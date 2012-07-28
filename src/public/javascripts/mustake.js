@@ -23,9 +23,10 @@ function Mustake () {
 		else if(kind == "head-other") var img = images['mustache-head-other'];
 		else var img = images['mustache'];
 
-		//ctx.rotate(Math.PI/2);
+		ctx.translate(img.width/2, img.height/2);
+		ctx.rotate(Math.PI/2);
 		ctx.drawImage(img, 0, 0, img.width, img.height, convX(pos.x), convY(pos.y), img.width / 2, img.height / 2);
-		//ctx.restore();
+		ctx.restore();
 	}
 
 	function drawSnake(mustaches) {
@@ -49,7 +50,7 @@ function Mustake () {
 
 	function drawCloud(pos){
 		var img = images['dotcloud'];
-		ctx.drawImage(img, 0, 0, img.width, img.height, convX(pos.x), convY(pos.y), img.width / 4, img.height / 4);
+		ctx.drawImage(img, 0, 0, img.width, img.height, convX(pos.x), convY(pos.y), img.width / 2, img.height / 2);
 	}
 
 

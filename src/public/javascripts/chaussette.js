@@ -4,7 +4,7 @@ function Chaussette () {
 	// render updated game state
 	socket.on('update', function(data){
 		console.log(data)
-		Game.draw(data);
+		//Game.draw(data);
 	});
 	
 	// emit this on keypress
