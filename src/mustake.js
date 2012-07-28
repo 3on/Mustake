@@ -93,7 +93,7 @@ Mustake.prototype = {
 		this.addCloud({x: 0, y: 0, radius: 20});
 		return this.players[id];
 	},
-	removePlayer : function() {
+	removePlayer : function(id) {
 		delete this.players[id];
 	},
 	addCloud : function(params) {

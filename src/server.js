@@ -28,15 +28,19 @@ var game = new mustake();
 
 io.on('connection', function(socket) {
     var player = game.createPlayer(function(data) {
-        io.emit('update', data);
+        socket.emit('update', data);
         console.log(data);
     });
-    io.on('keypress', function(data) {
+    socket.on('keypress', function(data) {
         var key = data.key;
         if (['up', 'down', 'left', 'right'].indexOf(key) < 0) {
             player.setO(key);
         }
     });
+    socket.on('disconnect', function(data) {
+        game.removePlayer(player.getId());
+        delete player;
+    })
 });
 
 app.listen(8080);

@@ -1,4 +1,5 @@
 function Chaussette () {
+	var socket = io.connect('http://localhost');
 	if(!io) {
 		console.log("socket IO is not working!!!")
 		return
