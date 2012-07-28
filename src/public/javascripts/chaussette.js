@@ -6,7 +6,7 @@ function Chaussette () {
 	
 	// render updated game state
 	io.on('update', function(data){
-	
+		Game.draw(data);
 	});
 	
 	// emit this on keypress
