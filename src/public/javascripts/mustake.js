@@ -91,6 +91,9 @@ function Mustake () {
 		var dWidth = img.width / 2;
 		var dHeight = img.height / 2;
 
+		//ctx.fillStyle = "rgb(255,0,0)";  
+ 		//ctx.fillRect (-2, -2, 4, 4);
+
 		ctx.drawImage(img, 0, 0, img.width, img.height, dx, dy, dWidth, dHeight);
 	}
 
