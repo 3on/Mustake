@@ -85,7 +85,10 @@ Player.prototype = {
 	},
 	isDead : function() {
 		return !this.alive;
-	}
+	},
+	length : function() {
+		return this.data.length;
+	},
 };
 
 var Mustake = function() {
