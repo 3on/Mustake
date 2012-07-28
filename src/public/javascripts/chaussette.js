@@ -3,13 +3,13 @@ function Chaussette () {
 
 	// render updated game state
 	socket.on('update', function(data){
-		console.log(data)
+		//console.log(data)
 		Game.draw(data);
 	});
 	
 	// emit this on keypress
 	this.send = function(data){
-		console.log(data)
+		//console.log(data)
 		socket.emit('keypress', data);
 	}
 
