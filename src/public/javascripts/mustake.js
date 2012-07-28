@@ -49,7 +49,7 @@ function Mustake () {
 
 	function drawCloud(pos){
 		var img = images['dotcloud'];
-		ctx.drawImage(img, 0, 0, img.width, img.height, convX(pos.x), convY(pos.y), img.width / 2, img.height / 2);
+		ctx.drawImage(img, 0, 0, img.width, img.height, convX(pos.x), convY(pos.y), img.width / 4, img.height / 4);
 	}
 
 
