@@ -161,7 +161,7 @@ Mustake.prototype = {
 					// mark this player to grow next tick
 					player.markGrow();
 					// remove the eaten cloud
-					_this.clouds = _this.clouds.slice(0, cloud.index).concat(_this.clouds.slice(index+1, _this.clouds.length));
+					_this.clouds = _this.clouds.slice(0, cloud.index).concat(_this.clouds.slice(cloud.index+1, _this.clouds.length));
 					// add another cloud
 					addCloud({x: head.x, y: head.y, radius: 20});
 				}
@@ -170,7 +170,7 @@ Mustake.prototype = {
 			_.each(_this.players, function(player) {
 				player.callback(_this.getInfo(player.getId()));
 			});
-		}, 2000);
+		}, 500);
 	},
 };
 
