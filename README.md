@@ -6,3 +6,7 @@ The entire game logic is made server side in Node.js and the client side only em
 The client by itself holds no data and do not update the frame unless it get a heartbeat from the server.  
 
 The game is multiplayer and the map is dynamic and grow as the players moves around. 
+
+
+http://mustake-dotcloud-labs.dotcloud.com
+
