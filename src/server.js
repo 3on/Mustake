@@ -1,13 +1,14 @@
 var express = require('express')
     , _ = require('underscore')
-    , app = express.createServer()
-    , io = require('socket.io').listen(app, { log: false })
+    , http = require('http')
+    , app = express()
+    , server = http.createServer(app)
+    , io = require('socket.io').listen(server, { log: false })
     , mustake = require('./mustake.js');
 
 app.configure(function() {
     app.use(express.bodyParser());
     app.use(express.cookieParser());
-    //app.use(express.csrf());
     app.use(app.router);
     app.use(express.static(__dirname + '/public'));
 });
@@ -43,5 +44,5 @@ io.on('connection', function(socket) {
 });
 
 console.log('Starting server on port: ' , process.env.PORT_WWW || 8080)
-app.listen(process.env.PORT_WWW || 8080);
+server.listen(process.env.PORT_WWW || 8080);
 game.run();

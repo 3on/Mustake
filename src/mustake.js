@@ -5,15 +5,34 @@ var randomDirection = function() {
 	return directions[Math.floor(Math.random()*4)];
 };
 
+
 var collision = function(here, objs) {
-	var match = null;
+	var x = {min: here.x - 1, max: here.x + 1};
+	var y = {min: here.y - 1, max: here.y + 1};
+	var match = null
 	_.each(objs, function(obj, index) {
-		if (here.x === obj.x && here.y === obj.y) {
+		var inRange = (obj.x >= x.min) && (obj.x <= x.max);
+		inRange = inRange && (obj.y >= y.min) && (obj.y <= y.max);
+		// if(inRange)
+		if (here.x === obj.x && here.y === obj.y)
 			match = {object: obj, index: index};
-		}
 	});
 	return match;
 };
+
+var collision2 = function(here, objs) {
+	var x = {min: here.x - 1, max: here.x + 1};
+	var y = {min: here.y - 1, max: here.y + 1};
+	var match = null
+	_.each(objs, function(obj, index) {
+		var inRange = (obj.x >= x.min) && (obj.x <= x.max);
+		inRange = inRange && (obj.y >= y.min) && (obj.y <= y.max);
+		if(inRange)
+			match = {object: obj, index: index};
+	});
+	return match;
+};
+
 
 var Player = function(id, callback) {
 	this.data = [{x: 0, y: 0, o: randomDirection()}];
@@ -157,7 +176,7 @@ Mustake.prototype = {
 					player.kill();
 				}
 				// check if clouds have been eaten
-				var cloud = collision(player.getHead(), _this.clouds);
+				var cloud = collision2(player.getHead(), _this.clouds);
 				if(cloud) {
 					// mark this player to grow next tick
 					player.markGrow();

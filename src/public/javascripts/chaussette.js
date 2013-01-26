@@ -1,6 +1,6 @@
 function Chaussette () {
 	var url = 'http://mustake:8080';
-	url = 'http://mustake-dotcloud-labs.dotcloud.com';
+	url = 'http://mustake-3on.dotcloud.com';
 	var socket = io.connect(url);
 
 	// render updated game state
